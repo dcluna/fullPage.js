@@ -122,6 +122,7 @@
             scrollOverflow: false,
             touchSensitivity: 5,
             normalScrollElementTouchThreshold: 5,
+            slimScrollOptions: {},
 
             //Accessibility
             keyboardScrolling: true,
@@ -1957,7 +1958,7 @@
                         height: scrollHeight + 'px',
                         size: '10px',
                         alwaysVisible: true
-                    });
+                    }.extend(options.slimScrollOptions));
                 }
             }
 
