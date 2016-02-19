@@ -20,6 +20,8 @@ QUnit.module( "module", {
     beforeEach: function( assert ) {
         //initializating fullpage.js
         $('#fullpage').fullpage({
+            scrollBar: true,
+            slimScrollOptions: { color: "#7fffd4" },
             anchors: ['page1', 'page2', 'page3', 'page4'],
             afterLoad: function(anchorLink, index){
                 sectionLoaded[index-1] = true;

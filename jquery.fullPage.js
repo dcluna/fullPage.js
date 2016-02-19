@@ -88,7 +88,7 @@
     var $window = $(window);
     var $document = $(document);
 
-    var defaultScrollHandler;
+    var defaultScrollHandlerFactory;
 
     $.fn.fullpage = function(options) {
 
@@ -126,7 +126,7 @@
             continuousVertical: false,
             normalScrollElements: null,
             scrollOverflow: false,
-            scrollOverflowHandler: defaultScrollHandler,
+            scrollOverflowHandler: defaultScrollHandlerFactory(options.slimScrollOptions),
             touchSensitivity: 5,
             normalScrollElementTouchThreshold: 5,
 
@@ -2682,7 +2682,8 @@
      *
      * @type {Object}
      */
-    var slimScrollHandler = {
+    defaultScrollHandlerFactory = function(slimScrollOptions){
+      return {
         /**
          * Optional function called after each render.
          *
@@ -2713,7 +2714,7 @@
                 height: scrollHeight + 'px',
                 size: '10px',
                 alwaysVisible: true
-            });
+            }.extend(slimScrollOptions));
         },
 
         /**
@@ -2792,8 +2793,7 @@
         wrapContent: function(){
             return '<div class="' + SCROLLABLE + '"></div>';
         }
+      }
     };
-
-    defaultScrollHandler = slimScrollHandler;
 
 });
